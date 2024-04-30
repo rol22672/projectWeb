@@ -2,7 +2,7 @@ import React from 'react';
 
 function Footer() {
   return (
-    <div className=" my-5">
+    <div >
       <footer className="bg-dark text-center text-white">
         <div className="container p-4 pb-0">
           {/* Section: Social media */}
