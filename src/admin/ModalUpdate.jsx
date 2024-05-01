@@ -1,6 +1,7 @@
-import React, { useState , useEffect} from 'react';
+import  { useState , useEffect} from 'react';
 import NotificationService from '../common/AlertNotification';
 import api from '../api/axios';
+import PropTypes from 'prop-types';
 
 
 function ModalUpdate({ toggleModal1, title, content, author, id }) {
@@ -84,5 +85,12 @@ function ModalUpdate({ toggleModal1, title, content, author, id }) {
     );
 }
 
+ModalUpdate.propTypes = {
+    toggleModal1: PropTypes.func.isRequired,
+    title: PropTypes.string.isRequired,
+    content: PropTypes.string.isRequired,
+    author: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
+};
 
 export default ModalUpdate;

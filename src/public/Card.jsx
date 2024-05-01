@@ -1,22 +1,13 @@
-import React, { useState , useEffect} from 'react';
+import PropTypes from 'prop-types';
 
 function Card({ title, content, author, img, id }){
     
-    const [showModal, setShowModal] = useState(false);
-
-    const toggleModal = () => setShowModal(!showModal);
-
-
-    const [showModal1, setShowModal1] = useState(false);
-
-    const toggleModal1 = () => setShowModal1(!showModal1);
-
 
     return (
         <div className="card ml-2 col-md-7 my-3" >
             <img className="card-img-top " src={img} alt="Card image cap"/>
             <div className="card-body">
-                <h5 className="card-title">{title}</h5>
+                <h5 className="card-title">{title} {id}</h5>
                 <p className="card-text">{content}</p>
                 <p className="card-text">Author: {author}</p>
             </div>
@@ -27,5 +18,15 @@ function Card({ title, content, author, img, id }){
         
     )
 }
+
+
+Card.propTypes = {
+    title: PropTypes.string.isRequired,
+    content: PropTypes.string.isRequired,
+    author: PropTypes.string.isRequired,
+    img: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
+};
+
 
 export default Card;

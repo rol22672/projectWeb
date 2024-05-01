@@ -1,6 +1,7 @@
-import React, { useState , useEffect} from 'react';
+import  { useState } from 'react';
 import api from '../api/axios';
 import NotificationService from '../common/AlertNotification';
+import PropTypes from 'prop-types';
 
 
 function ModalAdd({ toggleModal }) {
@@ -95,6 +96,12 @@ function ModalAdd({ toggleModal }) {
             </div>
         </div>
     )
+}
+
+
+ModalAdd.propTypes = {
+    toggleModal: PropTypes.func.isRequired,
 };
+
 
 export default ModalAdd;

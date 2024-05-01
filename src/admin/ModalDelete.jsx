@@ -1,6 +1,6 @@
-import React, { useState , useEffect} from 'react';
 import api from '../api/axios';
 
+import PropTypes from 'prop-types';
 
 
 function ModalDelete({ toggleModal, id }) {
@@ -44,5 +44,10 @@ function ModalDelete({ toggleModal, id }) {
     )
 }
 
+
+ModalDelete.propTypes = {
+    toggleModal: PropTypes.func.isRequired,
+    id: PropTypes.number.isRequired,
+};
 
 export default ModalDelete;

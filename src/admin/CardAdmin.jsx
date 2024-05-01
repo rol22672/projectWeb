@@ -1,6 +1,7 @@
-import React, { useState , useEffect} from 'react';
+import  { useState } from 'react';
 import ModalDelete from './ModalDelete';
 import ModalUpdate from './ModalUpdate';
+import PropTypes from 'prop-types';
 
 function CardAdmin({ title, content, author, img, id }){
     
@@ -40,5 +41,14 @@ function CardAdmin({ title, content, author, img, id }){
         
     )
 }
+
+
+CardAdmin.propTypes = {
+    title: PropTypes.string.isRequired,
+    content: PropTypes.string.isRequired,
+    author: PropTypes.string.isRequired,
+    img: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
+};
 
 export default CardAdmin;
