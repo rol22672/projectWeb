@@ -39,8 +39,8 @@ function HomeAdmin() {
 
     return (
         <>
-        <div className='w-100 h-100 justify-content-center align-items-center row'>
-            <div className='w-100 justify-content-end row my-3'>
+        <div className='w-100 h-100 justify-content-center align-items-center row m-0'>
+            <div className='w-100 justify-content-end row my-3 mx-3'>
                 <button type="button" className="btn btn-dark col-md-2" onClick={toggleModal}>Agregar</button>
             </div>
             {isLoading ? (

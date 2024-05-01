@@ -59,7 +59,7 @@ function ModalAdd({ toggleModal }) {
                 <div className="modal-content">
                     <div className="modal-header">
                         <h5 className="modal-title">Agregar nuevo post</h5>
-                        <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" onClick={toggleModal}></button>
                     </div>
                     <div className="modal-body">
                     <form onSubmit={handleSubmit}>
