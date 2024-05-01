@@ -2,6 +2,7 @@ import  { useState } from 'react';
 import api from '../api/axios';
 import NotificationService from '../common/AlertNotification';
 import PropTypes from 'prop-types';
+import { getToken } from '../api/authUtils';
 
 
 function ModalAdd({ toggleModal }) {
@@ -42,6 +43,13 @@ function ModalAdd({ toggleModal }) {
         if (!formData.title || !formData.content || ! formData.author) {
             NotificationService.error("Por favor complete todos los campos");
             return;
+        }
+        const token = getToken();
+        if (token) {
+            api.defaults.headers.common['Authorization'] = `${token}`;
+        }else{
+            NotificationService.error("no se ha encontrado el token");
+            
         }
         const response = await api.post("/posts/",formData);
 

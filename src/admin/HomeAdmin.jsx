@@ -5,6 +5,7 @@ import Loading from '../common/Loading';
 import NoPosts from '../common/NoPosts';
 import CardAdmin from './CardAdmin';
 import ModalAdd from './ModalAdd';
+import { getToken } from '../api/authUtils';
 
 function HomeAdmin() {
     const [data, setData] = useState([]);
@@ -16,6 +17,13 @@ function HomeAdmin() {
     const getPost = async() => {
         try {
             
+            const token = getToken();
+            if (token) {
+                api.defaults.headers.common['Authorization'] = `${token}`;
+            }else{
+                NotificationService.error("no se ha encontrado el token");
+                
+            }
             const response = await api.get("/posts");
             console.log('Respuesta del backend:', response);
             if(response.data.post){

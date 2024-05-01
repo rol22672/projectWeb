@@ -2,6 +2,7 @@ import  { useState , useEffect} from 'react';
 import NotificationService from '../common/AlertNotification';
 import api from '../api/axios';
 import PropTypes from 'prop-types';
+import { getToken } from '../api/authUtils';
 
 
 function ModalUpdate({ toggleModal1, title, content, author, id }) {
@@ -33,7 +34,13 @@ function ModalUpdate({ toggleModal1, title, content, author, id }) {
             return;
         }
 
-            
+            const token = getToken();
+            if (token) {
+                api.defaults.headers.common['Authorization'] = `${token}`;
+            }else{
+                NotificationService.error("no se ha encontrado el token");
+                
+            }
             const response = await api.put("/posts/"+id,formData);
             console.log(response);
             if (response.statusText!="OK") {

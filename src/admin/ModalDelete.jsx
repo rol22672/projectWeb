@@ -1,3 +1,4 @@
+import { getToken } from '../api/authUtils';
 import api from '../api/axios';
 
 import PropTypes from 'prop-types';
@@ -7,18 +8,21 @@ function ModalDelete({ toggleModal, id }) {
 
     const  handleDelete = async() => {
         
-
-        try {
-            const response = await api.delete("/posts/" + id);
-            if (response.statusText != "OK") {
-                throw new Error('La solicitud para eliminar el post falló');
-            }
-
-            location.reload(); // Considera actualizar la UI de manera más controlada en aplicaciones React
-            toggleModal(); // Cierra el modal después de eliminar
-        } catch (error) {
-            console.error('Error:', error);
+        const token = getToken();
+        if (token) {
+            api.defaults.headers.common['Authorization'] = `${token}`;
+        }else{
+            NotificationService.error("no se ha encontrado el token");
+            
         }
+        const response = await api.delete("/posts/" + id);
+        if (response.statusText != "OK") {
+            throw new Error('La solicitud para eliminar el post falló');
+        }
+
+        location.reload(); // Considera actualizar la UI de manera más controlada en aplicaciones React
+        toggleModal(); // Cierra el modal después de eliminar
+        
     };
 
 
