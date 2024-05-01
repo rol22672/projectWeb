@@ -21,7 +21,7 @@ function App() {
       <Router>
         <Suspense fallback={<Loading />}> {/* Esqueleto de carga mientras se cargan los componentes */}
           <Routes>
-            <Route path="/" component={Home1} />
+            <Route path="/" element={<Home1/>} />
             <Route path="/login" element={<Login />} />
             <Route path="/admin" element={
               <ProtectedRoute>
